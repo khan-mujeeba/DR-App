@@ -1,0 +1,12 @@
+.label{
+    color:#666;
+    font-weight: bold;
+    font-family: 'Monospace';
+
+}
+.row{
+    margin-bottom: 10px;
+}
+.form-control{
+    background-color: #f0f4f5;
+}

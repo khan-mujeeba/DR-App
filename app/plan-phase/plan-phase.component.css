@@ -1,0 +1,47 @@
+.label{
+    color:#666;
+    font-weight: bold;
+    font-family: 'Monospace';
+
+}
+
+
+.button {
+    background-color: #4682B4; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+  }
+
+  .bg{
+      background-color: #B0C4DE;
+  }
+
+  .bg1{
+    background-color: #4682B4;color: white;
+  }
+  
+  .bg2{
+    background-color: #4682B4;
+  }
+
+  .cl{
+    color: #FFFAFA;
+  }
+  /* .button1:hover {
+    background-color: #008080;
+    color: white;
+  } */

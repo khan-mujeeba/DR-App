@@ -1,0 +1,250 @@
+<app-landing></app-landing>
+<div class="bg">
+  <div class="text-center bg1" style="border-radius: 4px;padding: 10px;"><h3>{{phase['order']+'. '+phase['planname']}}</h3></div>
+  <div  class="container">
+    
+    <br/>
+    
+    <!--
+    <input type="text"[(ngModel)]="name"/>
+    <br/>
+    <button type="button" [disabled]="!enable" (click)="onBtnClick()"> Button</button>
+    <br/>
+    <p *ngIf="showproduct; else noProduct">Product found</p>
+    <ng-template #noProduct>Product name not found</ng-template> -->
+    <br/>
+    <!-- <div style="background-color: #eaeff59c;font-family: 'Monospace';">
+<app-preperation-form></app-preperation-form>
+</div> -->
+<!-- {'planname':dr['planname'],'order':dr['order'],'startdate':phase['startdate'],'enddate':phase['enddate'],'drname':phase['drname'],'drdecription':phase['description']} -->
+<app-preperation-form [name]="phase['drname']" [description]="phase['drdecription']" [startdate]="phase['startdate']" [enddate]="phase['enddate']"></app-preperation-form>
+<br/>
+    <div class="row">
+      <div class="col-md-6">
+        <button id="add_row"  class="button" (click)="onBtnClick()">Next Step</button>
+      </div>
+      <div class="col-md-6">
+      <button id="del_row" style="float:right"  class="button" (click)="onDelTable()">Delete</button>
+      </div>
+    </div>
+  
+ 
+  <br/>
+  <div *ngFor="let alpha of alphas; index as i">
+  <div *ngIf="!checkArray(tabName[i]);else mulTab"  style="border-radius: 10px;margin-bottom: 50px;padding: 25px;padding-bottom: 40;border-width:1.5px !important;background-color:white;" class="container border border-primary">
+  
+    <div class="row">
+      <div class="col-md-6">
+    <div style="color:#4682B4" ><h3 class="customheading">{{order}}.{{alpha}}  <span *ngIf="tabEdit[i]; else editTabName" >{{tabName[i]}}</span> </h3> 
+      <button *ngIf="tabEdit[i] else savebtn;" type="button"(click)="editBtnClick(i)" class="editbtn btn btn-secondary btn-sm">
+        <i style="font-size:20px" class="fa">&#xf044;</i>
+      </button>
+      </div>
+  <ng-template #savebtn><button type="button"(click)="editBtnClick(i)" class="editbtn btn btn-secondary btn-sm">Save
+  </button></ng-template>
+  <ng-template #editTabName><input type="text" [(ngModel)]="tabName[i]" class="form-control custominput"/></ng-template>
+  </div>  
+  <div class="col-md-6"> 
+    <button id="add_row" style="border-width: 0ch;float:right" class="button1" (click)="onAddSubStages(i)">Add Sub Stages</button>  
+  </div>
+</div>
+  <br/>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table  class="table table-bordered table-hover" id="tab_logic">
+      
+        <thead class="bg1" >
+          <tr>
+            <th class="text-center">
+              #
+            </th>
+            <th class="text-center">
+              Process
+            </th>
+            
+            <th class="text-center">
+              Detailed Steps
+            </th>
+            <th class="text-center">
+              Maker
+            </th>
+            <th class="text-center">
+              Checker
+            </th>
+            <th class="text-center">
+              Time Start
+            </th>
+            <th class="text-center">
+              Time End
+            </th>
+            <th class="text-center">
+             Remarks/Notes
+            </th>
+          </tr>
+        </thead>
+        <!--  #edf0f2-->
+        <tbody style="background-color: #eaeff59c;">
+          <tr id='addr0' *ngFor="let a of arr[i+1]; index as j">
+            <td>{{order}}.{{i+1+"."+(j+1)}}</td>
+            <td>Paynet Services (SAN/Mydebit) Disaster Recovery Activity Status Update
+            <!-- <input type="text" [name]="'process'+(i+1)+'_'+(j+1)" [id]="'process'+(i+1)+(j+1)"  placeholder='Process' class="form-control" required/> -->
+            </td>
+            <td> 1.	BCM to provide the status and readiness of Paynet services (SAN/MyDebit) at DR
+              <br><br>2.	In the event of Paynet services (SAN/MyDebit) DR activities failed, BSN management to revaluate the DR Live Run activities (Go or No No) 
+              
+            <!-- <input type="text" [name]="'detailedSteps'+(i+1)+(j+1)" [id]="'detailedSteps'+(i+1)+(j+1)" placeholder='Detailed Steps' class="form-control" required/> -->
+            </td>
+            
+              <td>BCM
+                (Wisma BSN)
+                
+                <!-- <input type="text" name='maker'  [id]="'maker'+(i+1)+(j+1)"  placeholder='Maker' class="form-control" required/> -->
+                </td>
+                <td>IT DR Team
+                  (Wisma BSN)
+                  
+                <!-- <input type="text" name='checker'  [id]="'checker'+(i+1)+(j+1)" placeholder='Checker' class="form-control" required/> -->
+                </td>
+                <td>08:00
+                <!-- <input type="time" name='startTime'  [id]="'startTime'+(i+1)+(j+1)" placeholder='Start Time' class="form-control" required/> -->
+                </td>
+                <td>09:00
+                  <!-- <input type="time" name='endTime'  [id]="'endTime'+(i+1)+(j+1)" placeholder='End Time' class="form-control" required/> -->
+                  </td>
+                  <td>
+                    <input type="text" name='remarks'  [id]="'remarks'+(i+1)+(j+1)" placeholder='Remarks/Notes' class="form-control"/>
+                    </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button id="add_row" style="border-width: 0ch;" class="btn btn-outline-primary pull-left" (click)="onAddRow(alpha)">Add Row</button><button id='delete_row' (click)="onDelRow(alpha)"  style="border-width: 0ch;" class="pull-right btn btn-outline-danger">Delete Row</button>
+  <br/>
+  <br/>
+  
+  </div>
+  <ng-template #mulTab>
+    <div  style="border-radius: 10px;margin-bottom: 50px;padding: 25px;padding-bottom: 40;border-width:1.5px !important;background-color:white;" class="container border border-primary">
+    <!-- <div class="row">
+    <div style="color:#666" class="col-md-8"><h3 class="customheading">1.{{alpha}} <span *ngIf="true; else editTabName" >{{tabName[i][0]}}</span> </h3> 
+      <button *ngIf="true else savebtn;" type="button" class="editbtn btn btn-secondary btn-sm">edit</button></div>
+   
+  <ng-template #savebtn><button type="button" class="editbtn btn btn-secondary btn-sm">save
+  </button></ng-template>
+  <ng-template #editTabName><input type="text"  class="form-control custominput"/></ng-template>
+  </div>   -->
+  <div class="row">
+    <div class="col-md-6">
+  <div style="color:#4682B4"><h3 class="customheading">{{order}}.{{alpha}}  <span *ngIf="tabEdit[i][0]; else editTabName" >{{tabName[i][0]}}</span> </h3> 
+    <button *ngIf="tabEdit[i][0] else savebtn;" type="button"(click)="editSubStage(i,0)" class="editbtn btn btn-secondary btn-sm"> <i style="font-size:20px" class="fa">&#xf044;</i></button>
+    </div>
+<ng-template #savebtn><button type="button"(click)="editSubStage(i,0)" class="editbtn btn btn-secondary btn-sm">Save
+</button></ng-template>
+<ng-template #editTabName><input type="text" [(ngModel)]="tabName[i][0]" class="form-control custominput"/></ng-template>
+</div>  
+<div class="col-md-6"> 
+  <button id="add_row" style="border-width: 0ch;float:right" class="btn btn-outline-danger" (click)="onDelsubStages(i)">Delete Sub stage</button>  
+  <button id="add_row" style="border-width: 0ch;float:right" class="btn btn-outline-primary" (click)="onAddSubStages(i)">Add Sub stage</button>  
+  
+</div>
+</div>
+  <br/>
+  <div *ngFor="let ar of arr[i+1];index as j">
+  <div class="row">
+  <div style="color:#4682B4" class="text-center"><h2 class="customheading">{{order}}.{{alpha}}.{{j+1}} <span *ngIf="tabEdit[i][j+1]; else editSubTabName">{{tabName[i][j+1]}}</span></h2>
+  <button *ngIf="tabEdit[i][j+1] else saveSubbtn;" type="button"(click)="editSubStage(i,j+1)" class="editbtn btn btn-secondary btn-sm"> <i style="font-size:20px" class="fa">&#xf044;</i></button>
+  <ng-template #saveSubbtn><button type="button"(click)="editSubStage(i,j+1)" class="editbtn btn btn-secondary btn-sm">Save
+  </button></ng-template>
+  <ng-template #editSubTabName><input type="text" [(ngModel)]="tabName[i][j+1]" class="form-control custominput"/></ng-template>
+  </div>
+  </div>
+  <br/>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table  class="table table-bordered table-hover" id="tab_logic">
+      
+        <thead class="bg1" >
+          <tr>
+            <th class="text-center">
+              #
+            </th>
+            <th class="text-center">
+              Process
+            </th>
+            <th class="text-center">
+             Detailed Steps
+            </th>
+           
+            <th class="text-center">
+              Maker
+            </th>
+            <th class="text-center">
+              Checker
+            </th>
+            <th class="text-center">
+              Time Start
+            </th>
+            <th class="text-center">
+              Time End
+            </th>
+            <th class="text-center">
+             Remarks/Notes
+            </th>
+          </tr>
+        </thead>
+        <tbody style="background-color: #eaeff59c;">
+          <tr id='addr0' *ngFor="let a of ar;index as k">
+            <td>{{order}}.{{alpha}}.{{j+1}}.{{a}}</td>
+            <td>
+            <input type="text" name="process" id="process"  placeholder='Process' class="form-control" required/>
+            </td>
+            <td>
+            <input type="text" name='detailedSteps' id="detailedSteps" placeholder=' Detailed Steps' class="form-control" required/>
+            </td>
+              <td>
+                <input type="text" name='maker'  id="maker"  placeholder='Maker' class="form-control" required/>
+                </td>
+                <td>
+                <input type="text" name='checker'  id="checker" placeholder='Checker' class="form-control" required/>
+                </td>
+                <td>
+                <input type="time" name='startTime'  id="startTime" placeholder='Start Time' class="form-control" required/>
+                </td>
+                <td>
+                  <input type="time" name='endTime'  id="endTime" placeholder='End Time' class="form-control" required/>
+                  </td>
+                  <td>
+                    <input type="text" name='remarks'  id="remarks" placeholder='Remarks/Notes' class="form-control"/>
+                    </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button id="add_row" style="border-width: 0ch;" class="button1  pull-left" (click)="onAddSubRow(i,j)" >Add Row</button>
+  <button id='delete_row'   style="border-width: 0ch;" (click)="onDelSubRow(i,j)" class="pull-right btn btn-outline-danger">Delete Row</button>
+</div>
+  
+  <br/>
+ 
+
+  
+  </div></ng-template>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <button id="add_row" style="font-weight: bold;"  class="button" >Save temporary</button>
+  </div>
+  <div class="col-md-6">
+  <button id="del_row" style="float:right"  class="button">Next</button>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+</div>
+</div>
+</div>
+  
+  <router-outlet></router-outlet>
+  

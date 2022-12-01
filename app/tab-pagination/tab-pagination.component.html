@@ -1,0 +1,109 @@
+<!-- <div style="background-color:#eaeff59c; ">
+  <div  class="container">
+  
+    
+    <br/>
+    <div class="text-center" style="background-color: #24a0ed;color: white; border-radius: 4px;padding: 10px;"><h3>1)  Preperation</h3></div>
+
+    <br/><br/><br/>
+    <button id="add_row"  class="btn btn-primary" (click)="onBtnClick()">Add Table</button>
+      
+  
+  </div>
+  
+  <br/>
+  <div *ngFor="let alpha of alphas; index as i" style="border-radius: 10px;margin-bottom: 50px;padding: 25px;padding-bottom: 40;border-width:1.5px !important;background-color:white;" class="container border border-primary">
+  
+    <div class="row">
+    <div style="color:#666" class="col-md-8"><h3 class="customheading">1.{{alpha}}  <span *ngIf="tabEdit[i]; else editTabName" >{{tabName[i]}}</span> </h3> 
+      <button *ngIf="tabEdit[i] else savebtn;" type="button"(click)="editBtnClick(i)" class="editbtn btn btn-secondary btn-sm">edit</button></div>
+ 
+  <ng-template #savebtn><button type="button"(click)="editBtnClick(i)" class="editbtn btn btn-secondary btn-sm">save
+  </button></ng-template>
+  <ng-template #editTabName><input type="text" [(ngModel)]="tabName[i]" class="form-control custominput"/></ng-template>
+  </div>  
+  <br/>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <table  class="table table-bordered table-hover" id="tab_logic">
+      
+        <thead style="background-color: #24a0ed;color: white;" >
+          <tr>
+            <th class="text-center">
+              #
+            </th>
+            <th class="text-center">
+              Process
+            </th>
+            <th class="text-center">
+             Detailed Steps
+            </th>
+            <th class="text-center">
+              Expected Results
+            </th>
+            <th class="text-center">
+              Actual Results
+            </th>
+            <th class="text-center">
+              Maker
+            </th>
+            <th class="text-center">
+              Checker
+            </th>
+            <th class="text-center">
+              Time Start
+            </th>
+            <th class="text-center">
+              Time End
+            </th>
+            <th class="text-center">
+             Remarks/Notes
+            </th>
+          </tr>
+        </thead>
+        <tbody style="background-color: #eaeff59c;">
+          <tr id='addr0' *ngFor="let a of arr[i+1]; index as j">
+            <td>1.{{i+1+"."+(j+1)}}</td>
+            <td>
+            <input type="text" [name]="'process'+(i+1)+(j+1)" [id]="'process'+(i+1)+(j+1)"  placeholder='Process' class="form-control" required/>
+            </td>
+            <td>
+            <input type="text" name='mail[]' [id]="'detailedSteps'+(i+1)+(j+1)" placeholder=' Detailed Steps' class="form-control" required/>
+            </td>
+            <td>
+            <input type="text" name='mobile[]' [id]="'expectedResults'+(i+1)+(j+1)" placeholder=' Expected Results' class="form-control" required/>
+            </td>
+            <td>
+              <input type="text" name='mobile1[]'  [id]="'actualResults'+(i+1)+(j+1)" placeholder='Actual Results' class="form-control" required/>
+              </td>
+              <td>
+                <input type="text" name='name[]'  [id]="'maker'+(i+1)+(j+1)"  placeholder='Maker' class="form-control" required/>
+                </td>
+                <td>
+                <input type="text" name='mail[]'  [id]="'checker'+(i+1)+(j+1)" placeholder='Checker' class="form-control" required/>
+                </td>
+                <td>
+                <input type="text" name='mobile[]'  [id]="'startTime'+(i+1)+(j+1)" placeholder='Start Time' class="form-control" required/>
+                </td>
+                <td>
+                  <input type="text" name='mobile1[]'  [id]="'endTime'+(i+1)+(j+1)" placeholder='End Time' class="form-control" required/>
+                  </td>
+                  <td>
+                    <input type="text" name='remarks'  [id]="'remarks'+(i+1)+(j+1)" placeholder='Remarks/Notes' class="form-control"/>
+                    </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button id="add_row" style="border-width: 0ch;" class="btn btn-outline-primary pull-left" (click)="onAddRow(alpha)">Add Row</button><button id='delete_row' (click)="onDelRow(alpha)"  style="border-width: 0ch;" class="pull-right btn btn-outline-danger">Delete Row</button>
+  <br/>
+  <br/>
+  
+  </div>
+</div> -->
+<div *ngFor="let clg of filteredArray">
+  <h3>{{clg.name}}</h3>
+</div>
+<!-- <mat-paginator [length]="100" [pageSize]="defaultRecords" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = $event; onPaginateChange($event)">
+</mat-paginator> -->
